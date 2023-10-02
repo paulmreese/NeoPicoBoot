@@ -62,14 +62,14 @@ function(add_resource_folder target name path)
 endfunction()
 
 add_executable(picoboot src/picoboot.c
-        ${CMAKE_CURRENT_BINARY_DIR}/PicoWNeoPixelServer/PicoHTTPServer/main.cpp
-        ${CMAKE_CURRENT_BINARY_DIR}/PicoWNeoPixelServer/PicoHTTPServer/dhcpserver/dhcpserver.c
-        ${CMAKE_CURRENT_BINARY_DIR}/PicoWNeoPixelServer/PicoHTTPServer/dns/dnsserver.c
-        ${CMAKE_CURRENT_BINARY_DIR}/PicoWNeoPixelServer/PicoHTTPServer/httpserver.c
-        ${CMAKE_CURRENT_BINARY_DIR}/PicoWNeoPixelServer/PicoHTTPServer/server_settings.c
+        ${CMAKE_CURRENT_SOURCE_DIR}/PicoWNeoPixelServer/PicoHTTPServer/main.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/PicoWNeoPixelServer/PicoHTTPServer/dhcpserver/dhcpserver.c
+        ${CMAKE_CURRENT_SOURCE_DIR}/PicoWNeoPixelServer/PicoHTTPServer/dns/dnsserver.c
+        ${CMAKE_CURRENT_SOURCE_DIR}/PicoWNeoPixelServer/PicoHTTPServer/httpserver.c
+        ${CMAKE_CURRENT_SOURCE_DIR}/PicoWNeoPixelServer/PicoHTTPServer/server_settings.c
 )
 
-add_resource_folder(picoboot www ${CMAKE_CURRENT_BINARY_DIR}/PicoWNeoPixelServer/PicoHTTPServer/www)
+add_resource_folder(picoboot www ${CMAKE_CURRENT_SOURCE_DIR}/PicoWNeoPixelServer/PicoHTTPServer/www)
 
 pico_generate_pio_header(picoboot  
         ${CMAKE_CURRENT_LIST_DIR}/src/picoboot.pio
