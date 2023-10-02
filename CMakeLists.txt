@@ -9,7 +9,7 @@ set(PICO_BOARD pico_w)
 # Pull in Raspberry Pi Pico SDK (must be before project)
 include(pico_sdk_import.cmake)
 
-project(picoboot C CXX ASM)
+project(NeoPicoBoot C CXX ASM)
 
 # Initialise the Raspberry Pi Pico SDK
 pico_sdk_init()
@@ -61,7 +61,7 @@ function(add_resource_folder target name path)
 
 endfunction()
 
-add_executable(picoboot src/picoboot.c
+add_executable(NeoPicoBoot src/picoboot.c
         ${CMAKE_CURRENT_SOURCE_DIR}/PicoWNeoPixelServer/PicoHTTPServer/main.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/PicoWNeoPixelServer/PicoHTTPServer/dhcpserver/dhcpserver.c
         ${CMAKE_CURRENT_SOURCE_DIR}/PicoWNeoPixelServer/PicoHTTPServer/dns/dnsserver.c
@@ -69,27 +69,27 @@ add_executable(picoboot src/picoboot.c
         ${CMAKE_CURRENT_SOURCE_DIR}/PicoWNeoPixelServer/PicoHTTPServer/server_settings.c
 )
 
-add_resource_folder(picoboot www ${CMAKE_CURRENT_SOURCE_DIR}/PicoWNeoPixelServer/PicoHTTPServer/www)
+add_resource_folder(NeoPicoBoot www ${CMAKE_CURRENT_SOURCE_DIR}/PicoWNeoPixelServer/PicoHTTPServer/www)
 
-pico_generate_pio_header(picoboot  
+pico_generate_pio_header(NeoPicoBoot  
         ${CMAKE_CURRENT_LIST_DIR}/src/picoboot.pio
 )
 
-pico_set_program_name(picoboot "picoboot")
-pico_set_program_version(picoboot "0.1")
-pico_set_binary_type(picoboot default)
+pico_set_program_name(NeoPicoBoot "NeoPicoBoot")
+pico_set_program_version(NeoPicoBoot "0.1")
+pico_set_binary_type(NeoPicoBoot default)
 
-pico_enable_stdio_uart(picoboot 0)
-pico_enable_stdio_usb(picoboot 1)
+pico_enable_stdio_uart(NeoPicoBoot 0)
+pico_enable_stdio_usb(NeoPicoBoot 1)
 
-target_compile_definitions(picoboot PRIVATE NO_SYS=0)
+target_compile_definitions(NeoPicoBoot PRIVATE NO_SYS=0)
 
-target_include_directories(picoboot PRIVATE src)
-target_include_directories(picoboot PRIVATE ${CMAKE_CURRENT_LIST_DIR})
-target_include_directories(picoboot PRIVATE ${CMAKE_CURRENT_LIST_DIR}/PicoWNeoPixelServer/PicoHTTPServer)
+target_include_directories(NeoPicoBoot PRIVATE src)
+target_include_directories(NeoPicoBoot PRIVATE ${CMAKE_CURRENT_LIST_DIR})
+target_include_directories(NeoPicoBoot PRIVATE ${CMAKE_CURRENT_LIST_DIR}/PicoWNeoPixelServer/PicoHTTPServer)
 
 target_link_libraries(
-        picoboot 
+        NeoPicoBoot 
         PicoHTTPServer 
         pico_stdlib 
         hardware_pio 
@@ -98,4 +98,4 @@ target_link_libraries(
         pico_lwip_iperf
 )        
 
-pico_add_extra_outputs(picoboot)
+pico_add_extra_outputs(NeoPicoBoot)
