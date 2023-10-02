@@ -4,6 +4,7 @@ _deps
 .DS_Store
 
 # Build environment
+build/*
 src/*
 !src/picoboot.c
 !src/picoboot.pio
