@@ -1,32 +1,39 @@
 /**
  * Copyright (c) 2022 Maciej Kobus
- *
+ * Original code licensed under
  * SPDX-License-Identifier: GPL-2.0-only
+ * All additional code licensed under GPL-3.0
  */
-
 #include <stdio.h>
 #include "pico/stdlib.h"
+//#include "pico/cyw43_arch.h"
+#include "pico/multicore.h"
 #include "hardware/pio.h"
 #include "hardware/clocks.h"
 #include "hardware/dma.h"
 #include "hardware/structs/bus_ctrl.h"
 #include "picoboot.pio.h"
 #include "ipl.h"
+#include "PicoWNeoPixelServer/PicoHTTPServer/picow_neopixel_server.h"
 
-const uint PIN_LED = 25;                // Status LED
+//This requires the use of the Wifi chip
+    // on a Pico W. This code would be called where WiFi is initialized
+//const uint PIN_LED = 25;                // Status LED
 const uint PIN_DATA_BASE = 6;           // Base pin used for output, 4 consecutive pins are used 
 const uint PIN_CS = 4;                 // U10 chip select
 const uint PIN_CLK = 5;                // EXI bus clock line
 
-void main()
+// __no_inline_not_in_flash_func to load from RAM
+void __no_inline_not_in_flash_func(main_contents)(void)
 {
+    
     // Initialize and light up builtin LED, it will basically
-    // act as a power LED.
+    // act as a power LED. This should be done in the main.cpp file,
+    // if at all. 
     // TODO: Use the LED to signalize system faults?
-    gpio_init(PIN_LED);
-    gpio_set_dir(PIN_LED, GPIO_OUT);
-    gpio_put(PIN_LED, true);
-
+    // pmr - The NeoPixels could communicate error state 
+    
+    
     // Set 250MHz clock to get more cycles in between CLK pulses.
     // This is the lowest value I was able to make the code work.
     // Should be still considered safe for most Pico boards.
@@ -103,7 +110,16 @@ void main()
     pio_sm_set_enabled(pio, transfer_start_sm, true);
     pio_sm_set_enabled(pio, clocked_output_sm, true);
 
+    bool server_has_started = false;
+
     while (true) {
         tight_loop_contents();
+        if (!server_has_started) {
+            multicore_launch_core1(launch_server);
+        }
     }
+}
+
+void main() {
+    main_contents();
 }
