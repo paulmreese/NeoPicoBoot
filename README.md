@@ -11,7 +11,7 @@ This is an IPL replacement modchip for Nintendo GameCube. It's also a WiFi Acces
 * easy-to-access NeoPixel web controls via Captive Portal
 * boots any DOL app of your choice
 
-![A zoomed-in view of a modded GameCube cycling a rainbow of colors in from the controller ports and power LED](/assets/RGB_Ports_and_Power_small.gif)
+<img src="/assets/RGB_Ports_and_Power_small.gif" alt="A zoomed-in view of a modded GameCube cycling a rainbow of colors in from the controller ports and power LED" align="center">
 
 ## Installation guide
 
