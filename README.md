@@ -11,9 +11,9 @@ This is an IPL replacement modchip for Nintendo GameCube. It's also a WiFi Acces
 * easy-to-access NeoPixel web controls via Captive Portal
 * boots any DOL app of your choice
 
-<div align="center">
-  <img src="/assets/RGB_Ports_and_Power_small.gif" alt="A zoomed-in view of a modded GameCube cycling a rainbow of colors in from the controller ports and power LED" margin="0 auto">
-</div>
+<p align="center">
+  <img src="/assets/RGB_Ports_and_Power_small.gif" alt="A zoomed-in view of a modded GameCube cycling a rainbow of colors in from the controller ports and power LED">
+</p>
 
 ## Installation guide
 
@@ -27,11 +27,26 @@ According to the [Raspberry Pi Pico W Datasheet](https://datasheets.raspberrypi.
 
 ### RGB
 As for the NeoPixels(WS2812, etc), this [video shows exactly how to mod your controller port board to add the NeoPixels](https://youtu.be/1XUOI1c_viQ?si=Boch__JV7q4JWGpH)
+<p align="center">
+  <img src="/assets/NeoPixel_Locations_Highlighted.jpg" alt="View of the GameCube controller port PCB from below, with the center retaining pins removed(highlighted in red)."/>
+  <i>GameCube controller ports from below, with retaining pins removed</i>
+</p>
+
 * [1:04](https://youtu.be/1XUOI1c_viQ?si=35ieH2EPR0lPXH_Q&t=64) - Remove the pins from each port. These pins can be removed from **either** the top *or* the bottom of each controller port. These LEDs can be very bright, so choose based on where you keep your GameCube. I personally use tweezers to snap the bottom ones so that I'm not competing with the battery for space.
 * [3:25](https://youtu.be/1XUOI1c_viQ?si=mzvSUIralLa4HMga&t=205) - Create a strand of 5 NeoPixels. Make sure to leave a little bit of slack in the wires between each NeoPixel, especially to the power led and Pico W. Check continuity on the positive and negative wires regularly!
+<p align="center">
+  <img src="/assets/LED_and_Battery_Controller_Board.jpg" alt="View of the GameCube controller port PCB from the back, highlighting the pins of the power LED and Battery"/>
+  <i>Battery and power LED solder points</i>
+</p>
+
 * [5:50](https://youtu.be/1XUOI1c_viQ?si=wtnrG3PIRv7RvrTk&t=350) - Remove stock LED. Optionally, also replace CR2032 Clock Battery. I would highly recommend replacing this battery with a separate battery holder and fresh battery.
-* [6:25](https://youtu.be/1XUOI1c_viQ?si=p0bYnIFZQqc9hqtQ&t=385) - Hot glue NeoPixels in place. Make sure they all point the same angle! Good advice: you can remove the hot glue with rubbing alcohol.
-* [8:00](https://youtu.be/1XUOI1c_viQ?si=zBVIya90WfhzKUA-&t=480) - Replace Power LED. In my experience, you often need to seat the power LED lower than shown for it to align correctly with the original light pipe. I recommend seating to the bottom of the notch on the PCB. This can sometimes involve sanding the PCB to fit a NeoPixel.
+* [6:25](https://youtu.be/1XUOI1c_viQ?si=p0bYnIFZQqc9hqtQ&t=385) - Hot glue controller port NeoPixels into place. Make sure they all point the same angle! Good advice: you can remove the hot glue with rubbing alcohol.
+<p align="center">
+  <img src="/assets/Finished_Controller_Board.jpg" alt="View of the GameCube controller port PCB from the front, with the sanded/filed-away area highlighted. A new battery holder with a new battery is shown."/>
+  <i>The highlighted area has been sanded away. Note the new battery holder</i>
+</p>
+
+* [8:00](https://youtu.be/1XUOI1c_viQ?si=zBVIya90WfhzKUA-&t=480) - Hot glue Power NeoPixel. In my experience, you often need to seat the power LED lower than shown in the video for it to align correctly with the original light pipe. I recommend seating to the bottom of the notch on the PCB. This can sometimes involve sanding the PCB to the side to fit a NeoPixel.
 
 
 Other than the NeoPixels being added, and **3V3** being swapped for **VSYS** from the 5V rail of the controller ports, the wiring works exactly like the original. So, if you need any additional help you can head over to [the PicoBoot wiki](https://github.com/webhdx/PicoBoot/wiki) for [the PicoBoot Installation guide](../../wiki/Installation-guide).
