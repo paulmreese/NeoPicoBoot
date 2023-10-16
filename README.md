@@ -40,7 +40,7 @@ As for the NeoPixels(WS2812, etc), this [video shows exactly how to mod your con
 </p>
 
 * [5:50](https://youtu.be/1XUOI1c_viQ?si=wtnrG3PIRv7RvrTk&t=350) - Remove stock LED. Optionally, also replace CR2032 Clock Battery. I would highly recommend replacing this battery with a separate battery holder and fresh battery.
-* [6:25](https://youtu.be/1XUOI1c_viQ?si=p0bYnIFZQqc9hqtQ&t=385) - Hot glue controller port NeoPixels into place. Make sure they all point the same angle! Good advice: you can remove the hot glue with rubbing alcohol.
+* [6:25](https://youtu.be/1XUOI1c_viQ?si=p0bYnIFZQqc9hqtQ&t=385) - Hot glue controller port NeoPixels into place. Make sure they all point the same angle! You can remove the hot glue with rubbing alcohol. I've included [a 3D model of a basic alignment bracket as an STL file](/assets/NeoPixel_Bracket.stl) if you have access to a 3D printer.
 <p align="center">
   <img src="/assets/Finished_Controller_Board.jpg" alt="View of the GameCube controller port PCB from the front, with the sanded/filed-away area highlighted. A new battery holder with a new battery is shown."/>
   <i>The highlighted area has been sanded away. Note the new battery holder</i>
