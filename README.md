@@ -40,7 +40,7 @@ As for the NeoPixels(WS2812, etc), this [video shows exactly how to mod your con
 </p>
 
 * [5:50](https://youtu.be/1XUOI1c_viQ?si=wtnrG3PIRv7RvrTk&t=350) - Remove stock LED. Optionally, also replace CR2032 Clock Battery. I would highly recommend replacing this battery with a separate battery holder and fresh battery.
-* [6:25](https://youtu.be/1XUOI1c_viQ?si=p0bYnIFZQqc9hqtQ&t=385) - Hot glue controller port NeoPixels into place. Make sure they all point the same angle! You can remove the hot glue with rubbing alcohol. I've included [a 3D model of a basic alignment bracket as an STL file](/assets/NeoPixel_Bracket.stl) if you have access to a 3D printer.
+* [6:25](https://youtu.be/1XUOI1c_viQ?si=p0bYnIFZQqc9hqtQ&t=385) - Hot glue controller port NeoPixels into place. Make sure they all point the same angle! You can remove the hot glue with rubbing alcohol. I've included [a 3D model of a basic alignment bracket as an STL file](/assets/NeoPixel_Bracket.stl) if you have access to a 3D printer. This bracket will only install below the controller ports, if you have a normally installed battery.
 <p align="center">
   <img src="/assets/Finished_Controller_Board.jpg" alt="View of the GameCube controller port PCB from the front, with the sanded/filed-away area highlighted. A new battery holder with a new battery is shown."/>
   <i>The highlighted area has been sanded away. Note the new battery holder</i>
@@ -54,6 +54,15 @@ Other than the NeoPixels being added, and **3V3** being swapped for **VSYS** fro
 Additionally, you can check the PicoBoot Discord Server to get support and discuss new features:
 
 [![](https://dcbadge.vercel.app/api/server/fEhyWRPCmb)](https://click.webhdx.dev/discord)
+
+## 3D Printing
+Printing these `STL` files makes for a much simpler installation process, but neither is necessary.
+
+* [PicoBoot Mount for the Nintendo Gamecube](https://www.thingiverse.com/thing:5482506) - This mounts the Pico W onto the controller port board. While other mounts exist, this one is convenient for 2 reasons:
+    1. The wires can exit the motherboard towards the controller ports, without deforming the RF shielding.
+    2. The NeoPixels can be closer to the Pico W itself, with shorter wires.
+* [NeoPixel alignment bracket](/assets/NeoPixel_Bracket.stl) - This bracket helps to align all of the controller port NeoPixels with the correct spacing. It will only install below the controller ports, if you have a normally installed battery. This can be printed in PLA and hot-glued into place.
+
 
 ## Hall of Fame
 
