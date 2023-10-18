@@ -18,15 +18,13 @@ This is an IPL replacement modchip for Nintendo GameCube. It's also a WiFi Acces
 ## Installation guide
 
 <p align="center">
-  <a href="/assets/NeoPicoBoot_Wiring_Diagram.jpg">
-    <img src="/assets/NeoPicoBoot_Wiring_Diagram_small.jpg" alt="NeoPicoBoot Wiring Diagram"/>
-  </a>
+  <img src="/assets/NeoPicoBoot_Wiring_Diagram_small.jpg" alt="NeoPicoBoot Wiring Diagram"/>
   <i>
     A visual installation guide to show wiring connections
   </i>
 </p>
 
-This should be enough information to guide someone through a basic installation. This wiring incorporates [a method mentioned in an issue on the original PicoBoot Repo](https://github.com/webhdx/PicoBoot/issues/75#issuecomment-1539225503), which wires power into the **VSYS** pin of the Pico W instead of the **3V3** pin.
+This should be enough information to guide someone through a basic installation. [A larger version of the image](/assets/NeoPicoBoot_Wiring_Diagram.jpg) is also included with this repo. This wiring incorporates [a method mentioned in an issue on the original PicoBoot Repo](https://github.com/webhdx/PicoBoot/issues/75#issuecomment-1539225503), which wires power into the **VSYS** pin of the Pico W instead of the **3V3** pin.
 
 According to the [Raspberry Pi Pico W Datasheet](https://datasheets.raspberrypi.com/picow/pico-w-datasheet.pdf):
 > VSYS is the main system input voltage, which can vary in the allowed range 1.8V to 5.5V, and is used by the on-board SMPS to generate the 3.3V for the RP2040 and its GPIO.
