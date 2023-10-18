@@ -1,8 +1,8 @@
 #!/bin/bash
-mkdir -p tools/SimpleFSBuilder/build
-mkdir -p example/build
-cmake -S tools/SimpleFSBuilder -B tools/SimpleFSBuilder/build
-make -C tools/SimpleFSBuilder/build || exit 1
+test -d tools/SimpleFSBuilder/build || mkdir -p tools/SimpleFSBuilder/build
+test -d example/build || mkdir -p example/build
+test -f tools/SimpleFSBuilder/buildCMakeCache.txt || cmake -S tools/SimpleFSBuilder -B tools/SimpleFSBuilder/build
+test -e tools/SimpleFSBuilder/SimpleFSBuilder || make -C tools/SimpleFSBuilder/build || exit 1
 
 test -d pico-sdk || git clone --recursive https://github.com/raspberrypi/pico-sdk
 test -d pico-sdk/FreeRTOS || git clone --recursive --branch smp https://github.com/FreeRTOS/FreeRTOS-Kernel pico-sdk/FreeRTOS
