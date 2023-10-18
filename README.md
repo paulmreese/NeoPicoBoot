@@ -41,7 +41,7 @@ As for the NeoPixels(WS2812, etc), this [video shows exactly how to mod your con
 * [1:04](https://youtu.be/1XUOI1c_viQ?si=35ieH2EPR0lPXH_Q&t=64) - Remove the pins from each port. These pins can be removed from **either** the top *or* the bottom of each controller port. These LEDs can be very bright, so choose based on where you keep your GameCube. I personally use tweezers to snap the bottom ones so that I'm not competing with the battery for space.
 <p align="center">
   <img src="/assets/Hot_Glued_NeoPixels_small.jpg" alt="Five NeoPixels wired together in a chain, with four of them hot-glued into a 3d-printed bracket."/>
-  <i>Wired NeoPixels set in their [3D-printed bracket](/assets/NeoPixel_Bracket.stl)</i>
+  <i>Wired NeoPixels set in their <a href="/assets/NeoPixel_Bracket.stl">3D-printed bracket</a></i>
 </p>
 
 * [3:25](https://youtu.be/1XUOI1c_viQ?si=mzvSUIralLa4HMga&t=205) - Create a strand of 5 NeoPixels. Make sure to leave a little bit of slack in the wires between each NeoPixel, especially to the power led and Pico W. Make sure the arrows on your NeoPixels point the same direction, and check continuity on the positive and negative wires regularly!
@@ -71,7 +71,7 @@ Additionally, you can check the PicoBoot Discord Server to get support and discu
 
 [![](https://dcbadge.vercel.app/api/server/fEhyWRPCmb)](https://click.webhdx.dev/discord)
 
-## 3D Printing
+## 3D Printed Parts
 Printing these `STL` files makes for a much simpler installation process, but neither is necessary.
 
 * [PicoBoot Mount for the Nintendo Gamecube](https://www.thingiverse.com/thing:5482506) - This mounts the Pico W onto the controller port board. While other mounts exist, this one is convenient for 2 reasons:
