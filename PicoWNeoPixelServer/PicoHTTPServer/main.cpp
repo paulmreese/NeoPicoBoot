@@ -37,7 +37,7 @@ uint16_t LED_COUNT = 5;
 // electrically sequenced? (The first NeoPixel of the electrical sequence is 
 // number "0", next is "1", etc.) The last pixel should be the Power LED.
 // The string should terminate with a trailing space!!
-std::string PIXEL_ORDER = "3 2 1 0 4 ";
+std::string PIXEL_ORDER = "4 0 1 2 3 ";
 
 // Declare our NeoPixel strip object:
 NeoPixelStrip npStrip(LED_COUNT, LED_PIN, PIXEL_ORDER);
