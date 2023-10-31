@@ -7,7 +7,7 @@ test -f PicoWNeoPixelServer/tools/SimpleFSBuilder/buildCMakeCache.txt || cmake -
 test -e PicoWNeoPixelServer/tools/SimpleFSBuilder/SimpleFSBuilder || make -C PicoWNeoPixelServer/tools/SimpleFSBuilder/build || (echo "Filesystem failed to build. Try running the 'build-filesystem.sh' script" && exit 1)
 
 test -d PicoWNeoPixelServer/pico-sdk || git clone --recursive https://github.com/raspberrypi/pico-sdk
-test -d PicoWNeoPixelServer/pico-sdk/FreeRTOS || git clone --recursive --branch smp https://github.com/FreeRTOS/FreeRTOS-Kernel PicoWNeoPixelServer/pico-sdk/FreeRTOS
+test -d PicoWNeoPixelServer/pico-sdk/FreeRTOS || git clone --recursive --branch main https://github.com/FreeRTOS/FreeRTOS-Kernel PicoWNeoPixelServer/pico-sdk/FreeRTOS
 grep -e ip4_secondary_ip_address PicoWNeoPixelServer/pico-sdk/lib/lwip/src/core/ipv4/ip4.c || patch -p1 -d PicoWNeoPixelServer/pico-sdk/lib/lwip < PicoWNeoPixelServer/lwip_patch/lwip.patch || (echo "Failed to apply patch" && exit 1)
 
 test -f src/ipl.h || ./process_ipl.py src/iplboot.dol src/ipl.h || (echo "IPL boot failed to process. Have you downloaded an 'iplboot.dol' file and copied it into the 'src' folder?" && exit 1)
