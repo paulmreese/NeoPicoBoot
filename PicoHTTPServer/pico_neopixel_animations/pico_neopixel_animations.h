@@ -91,6 +91,11 @@ class NeoPixelStrip {
         /* "Packs" 3 8-bit values into a single 32-bit RGB color */
         uint32_t packColor(uint8_t r_comp, uint8_t g_comp, uint8_t b_comp);
 
+        /* Returns the index of a specific NeoPixel in the electrical order, 
+           based on it's visual position.
+        */
+        uint16_t parseOrder(uint16_t value);
+
         /* Translates a slider value from 1-100 and translates it to a delay
            value in milliseconds(ms)
          */

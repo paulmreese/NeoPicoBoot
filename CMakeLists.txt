@@ -68,6 +68,9 @@ add_executable(PicoWNeoPixelServer
 
 add_resource_folder(PicoWNeoPixelServer www ${CMAKE_CURRENT_BINARY_DIR}/../../PicoHTTPServer/www)
 
+pico_enable_stdio_uart(PicoWNeoPixelServer 0)
+pico_enable_stdio_usb(PicoWNeoPixelServer 1)
+
 target_compile_definitions(PicoWNeoPixelServer PRIVATE NO_SYS=0)
 target_include_directories(PicoWNeoPixelServer PRIVATE
         ${CMAKE_CURRENT_LIST_DIR}
