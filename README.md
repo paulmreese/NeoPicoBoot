@@ -59,8 +59,10 @@ I'd like to thank people who helped making PicoBoot possible:
 Some parts of this project use GPL-2.0 licensed code from:
  * https://github.com/webhdx/PicoBoot
  * https://github.com/redolution/iplboot
+
 Some parts of this project use MIT licensed code from:
  * https://github.com/sysprogs/PicoHTTPServer
+ 
 Some parts of this project use LGPL-3.0 licensed code from:
  * https://github.com/martinkooij/pi-pico-adafruit-neopixels
  * https://github.com/adafruit/Adafruit_NeoPixel
