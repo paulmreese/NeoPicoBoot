@@ -7,7 +7,6 @@
 #include <stdio.h>
 #include "pico/stdlib.h"
 //#include "pico/cyw43_arch.h"
-#include "pico/multicore.h"
 #include "hardware/pio.h"
 #include "hardware/clocks.h"
 #include "hardware/dma.h"
@@ -115,7 +114,7 @@ void __no_inline_not_in_flash_func(main_contents)(void)
     while (true) {
         tight_loop_contents();
         if (!server_has_started) {
-            multicore_launch_core1(launch_server);
+            launch_server();
         }
     }
 }

@@ -92,6 +92,7 @@ target_link_libraries(
         NeoPicoBoot 
         PicoHTTPServer 
         pico_stdlib 
+        pico_multicore
         hardware_pio 
         hardware_dma 
         pico_cyw43_arch_lwip_sys_freertos
