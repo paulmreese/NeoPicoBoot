@@ -19,6 +19,8 @@ This is an IPL replacement modchip for Nintendo GameCube. It's also a WiFi Acces
 
 The complete installation guide has been moved to [a separate document](/INSTALLATION.md).
 
+**Install firmware before wiring the Pico W to your GameCube. Connecting power to the USB port after the mod has been wired will destroy the power board, at minimum. Please mod carefully.**
+
 Other than the NeoPixels being added, and **3V3** being swapped for **VSYS** from the 5V rail of the controller ports, the wiring works exactly like the original. So, if you need any additional help you can head over to [the PicoBoot wiki](https://github.com/webhdx/PicoBoot/wiki) for [the PicoBoot Installation guide](../../wiki/Installation-guide).
 
 Additionally, you can check the PicoBoot Discord Server to get support and discuss new features:
@@ -27,7 +29,7 @@ Additionally, you can check the PicoBoot Discord Server to get support and discu
 
 ## Usage guide
 
-The controls are designed to be as intuitive as possible. Take a look at the [Usage guide](USAGE.md) if you have any questions(or if you want to customize your network name or security). 
+The controls are designed to be as intuitive as possible. Take a look at the [Usage guide](USAGE.md) if you have any questions(or if you want to customize your network name or security).
 
 ## 3D Printed Parts
 Printing these `STL` files makes for a much simpler installation process, but neither is necessary.

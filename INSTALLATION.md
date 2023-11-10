@@ -9,6 +9,8 @@
   </i>
 </p>
 
+**Install firmware before wiring the Pico W to your GameCube. Connecting power to the USB port after the mod has been wired will destroy the power board, at minimum. Please mod carefully.**
+
 This should be enough information to guide someone through a basic installation. [A larger version of the image](/assets/NeoPicoBoot_Wiring_Diagram.jpg) is also included with this repo. This wiring incorporates [a method mentioned in an issue on the original PicoBoot Repo](https://github.com/webhdx/PicoBoot/issues/75#issuecomment-1539225503), which wires power into the **VSYS** pin of the Pico W instead of the **3V3** pin.
 
 According to the [Raspberry Pi Pico W Datasheet](https://datasheets.raspberrypi.com/picow/pico-w-datasheet.pdf):
