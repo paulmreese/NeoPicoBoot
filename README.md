@@ -25,6 +25,10 @@ Additionally, you can check the PicoBoot Discord Server to get support and discu
 
 [![](https://dcbadge.vercel.app/api/server/fEhyWRPCmb)](https://click.webhdx.dev/discord)
 
+## Usage guide
+
+The controls are designed to be as intuitive as possible. Take a look at the [Usage guide](USAGE.md) if you have any questions(or if you want to customize your network name or security). 
+
 ## 3D Printed Parts
 Printing these `STL` files makes for a much simpler installation process, but neither is necessary.
 
