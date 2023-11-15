@@ -524,14 +524,15 @@ void NeoPixelStrip::demo_loop() {
 // test_loop() function -- Demonstration of basic usage
 void NeoPixelStrip::test_loop() {
     // Test sequence for startup
-    // Should fade in to Crimson/White
+    // Should fade in to RGB(84, 107, 222)
     printf("Fade In\n");
     propTransitionBrightness(140, 30);
     printf("Rainbow Marquee\n");
     theaterChaseRainbow(12);
     printf("Rainbows\n");
     rainbow(5);
-    altOppFade(strip.Color(255, 30, 35), strip.Color(255, 255, 255), 2, 35);
+    propTransitionAll(strip.Color(84, 107, 222));
+    
 
 }
 
