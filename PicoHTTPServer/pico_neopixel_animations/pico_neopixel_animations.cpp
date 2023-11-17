@@ -40,7 +40,7 @@ NeoPixelStrip::NeoPixelStrip(
     strip.show();           
 }
 
-uint8_t NeoPixelStrip::brightness=100;
+uint8_t NeoPixelStrip::brightness=220;
 
 // Helper Functions ---------------------------------------------
 

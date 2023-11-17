@@ -43,7 +43,7 @@ class NeoPixelStrip {
             uint16_t led_count, 
             uint16_t pin, 
             std::string pixelOrderString="default",
-            uint8_t brightness=150
+            uint8_t brightness=220
         );
 
         static uint8_t brightness; //Max 255
