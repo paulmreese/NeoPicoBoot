@@ -577,7 +577,7 @@ void NeoPixelStrip::gameCubeStartUp(){
     // strip.setBrightnessFunctions(
     //     adjustBrightness, adjustBrightness, adjustBrightness, adjustBrightness
     // );
-    strip.fill(strip.gamma32(strip.ColorHSV(50061, 255, 200))); // bright indigo
+    strip.fill(strip.gamma32(strip.ColorHSV(strip.Color(75, 0, 130), 255, 200))); // bright indigo
     strip.show();
     sleep_us(eighthNote);
 
@@ -591,7 +591,7 @@ void NeoPixelStrip::gameCubeStartUp(){
     // strip.setBrightnessFunctions(
     //     adjustBrightness, adjustBrightness, adjustBrightness, adjustBrightness
     // );
-    strip.fill(strip.gamma32(strip.ColorHSV(0, 0, 240))); // brighter white
+    strip.fill(strip.gamma32(strip.ColorHSV(strip.Color(0, 0, 0), 0, 240))); // brighter white
     strip.show();
     fadeInBrightness(100, 20);
     propTransitionAll(strip.Color(84, 107, 222), 20);
