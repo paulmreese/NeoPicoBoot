@@ -536,8 +536,8 @@ void NeoPixelStrip::gameCubeStartUp(){
     // means we'll make (65536/2731 ≈ 24) 24 passes through this outer loop:
     for(long firstPixelHue = 0; firstPixelHue < 65536; firstPixelHue += 2731) {
         // Notes which should be accented 
-        bool accentedNote = ((firstPixelHue == 0) || (firstPixelHue / (2731 * 6) == 1) || 
-            (firstPixelHue / (2731 * 14) == 1) || (firstPixelHue / (2731 * 18) == 1));
+        bool accentedNote = ((firstPixelHue == 0) || ((firstPixelHue / 2731) == 6) || 
+            ((firstPixelHue / 2731) == 14) || ((firstPixelHue / 2731) == 18));
         for(int i=0; i<strip.numPixels(); i++) { // For each pixel in strip...
             // Offset pixel hue by an amount to make one full revolution of the
             // color wheel (range of 65536) along the length of the strip
@@ -549,19 +549,19 @@ void NeoPixelStrip::gameCubeStartUp(){
             // is passed through strip.gamma32() to provide 'truer' colors
             // before assigning to each pixel:
             if (accentedNote) {
-                brightness = 180;
-                strip.setBrightnessFunctions(
-                    adjustBrightness, adjustBrightness, adjustBrightness, adjustBrightness
-                );
+                // brightness = 180;
+                // strip.setBrightnessFunctions(
+                //     adjustBrightness, adjustBrightness, adjustBrightness, adjustBrightness
+                // );
                 strip.setPixelColor(
                     pixelOrder[parseOrder(i)], 
                     strip.gamma32(strip.ColorHSV(pixelHue, 255, 180))
                 );
             } else {
-                brightness = 100;
-                strip.setBrightnessFunctions(
-                    adjustBrightness, adjustBrightness, adjustBrightness, adjustBrightness
-                );
+                // brightness = 100;
+                // strip.setBrightnessFunctions(
+                //     adjustBrightness, adjustBrightness, adjustBrightness, adjustBrightness
+                // );
                 strip.setPixelColor(
                     pixelOrder[parseOrder(i)], 
                     strip.gamma32(strip.ColorHSV(pixelHue, 255, 100))
@@ -573,10 +573,10 @@ void NeoPixelStrip::gameCubeStartUp(){
     }
     // final six sixteenth notes. (really 3 eighth notes)
     // first at 180
-    brightness = 180;
-    strip.setBrightnessFunctions(
-        adjustBrightness, adjustBrightness, adjustBrightness, adjustBrightness
-    );
+    // brightness = 180;
+    // strip.setBrightnessFunctions(
+    //     adjustBrightness, adjustBrightness, adjustBrightness, adjustBrightness
+    // );
     strip.fill(strip.gamma32(strip.ColorHSV(275, 255, 180))); // bright indigo
     strip.show();
     sleep_us(eighthNote);
@@ -587,14 +587,14 @@ void NeoPixelStrip::gameCubeStartUp(){
     sleep_us(eighthNote);
 
     // second at 230
-    brightness = 230;
-    strip.setBrightnessFunctions(
-        adjustBrightness, adjustBrightness, adjustBrightness, adjustBrightness
-    );
+    // brightness = 230;
+    // strip.setBrightnessFunctions(
+    //     adjustBrightness, adjustBrightness, adjustBrightness, adjustBrightness
+    // );
     strip.fill(strip.gamma32(strip.ColorHSV(0, 0, 230))); // brighter white
     strip.show();
-    fadeInBrightness(100);
-    propTransitionAll(strip.Color(84, 107, 222));
+    fadeInBrightness(100, 25);
+    propTransitionAll(strip.Color(84, 107, 222), 25);
     effect_index=0;
     updateStateColors();
 }
