@@ -575,10 +575,12 @@ void NeoPixelStrip::gameCubeStartUp(){
         adjustBrightness, adjustBrightness, adjustBrightness, adjustBrightness
     );
     strip.fill(strip.gamma32(strip.ColorHSV(275, 255, 180))); // bright indigo
+    strip.show();
     sleep_us(64655);
 
     // rest at 0
     strip.fill();
+    strip.show();
     sleep_us(64655);
 
     // second at 230
@@ -587,6 +589,7 @@ void NeoPixelStrip::gameCubeStartUp(){
         adjustBrightness, adjustBrightness, adjustBrightness, adjustBrightness
     );
     strip.fill(strip.gamma32(strip.ColorHSV(0, 0, 230))); // brighter white
+    strip.show();
     fadeInBrightness(100);
     propTransitionAll(strip.Color(84, 107, 222));
     effect_index=0;
