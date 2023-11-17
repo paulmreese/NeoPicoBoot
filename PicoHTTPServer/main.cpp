@@ -753,8 +753,8 @@ void debug_write(const void *data, int size)
 
 void launch_server()
 {
-	// Delay to give the picoboot time
-	npStrip.delay(200);
+	// Delay to sync startup animation with cube
+	npStrip.delay(500);
 	stdio_init_all();
 	TaskHandle_t task;
 	s_PrintfSemaphore = xSemaphoreCreateMutex();
