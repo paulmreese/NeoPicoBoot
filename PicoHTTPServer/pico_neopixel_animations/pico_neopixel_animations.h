@@ -214,8 +214,11 @@ class NeoPixelStrip {
         void theaterChaseRainbow(int wait);
 
         /* Endpoint function intended to be interacted with by other projects. 
-           Transitions a single pixel to a new color*/
+           Transitions a single pixel to a new color */
         void htmlSinglePixel(int pixel_num, uint32_t packed_color, int wait);
+
+        /* Startup animation synced with the GameCube startup song */
+        void gameCubeStartUp();
 
         /* Demonstration of basic usage */
         void demo_loop();
