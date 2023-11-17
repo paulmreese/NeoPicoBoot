@@ -577,7 +577,7 @@ void NeoPixelStrip::gameCubeStartUp(){
     // strip.setBrightnessFunctions(
     //     adjustBrightness, adjustBrightness, adjustBrightness, adjustBrightness
     // );
-    strip.fill(strip.ColorHSV(strip.Color(75, 0, 130), 255, 200)); // bright indigo
+    strip.fill(strip.Color(75, 0, 130)); // bright indigo
     strip.show();
     sleep_us(eighthNote);
 
