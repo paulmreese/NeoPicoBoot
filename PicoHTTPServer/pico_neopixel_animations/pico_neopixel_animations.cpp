@@ -533,8 +533,8 @@ void NeoPixelStrip::gameCubeStartUp(){
     // means we'll make (65536/2731 ≈ 24) 24 passes through this outer loop:
     for(long firstPixelHue = 0; firstPixelHue < 65536; firstPixelHue += 2731) {
         // Notes which should be accented 
-        bool accentedNote = (firstPixelHue == 0) || (firstPixelHue / (2731 * 6) == 1) || 
-            (firstPixelHue / (2731 * 14) == 1) || (firstPixelHue / (2731 * 18) == 1);
+        bool accentedNote = ((firstPixelHue == 0) || (firstPixelHue / (2731 * 6) == 1) || 
+            (firstPixelHue / (2731 * 14) == 1) || (firstPixelHue / (2731 * 18) == 1));
         for(int i=0; i<strip.numPixels(); i++) { // For each pixel in strip...
             // Offset pixel hue by an amount to make one full revolution of the
             // color wheel (range of 65536) along the length of the strip
