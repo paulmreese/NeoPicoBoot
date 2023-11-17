@@ -251,22 +251,38 @@ uint32_t NeoPixelStrip::propStepColor(
 // Functions for animating effects -----------------------------
 
 // Function to fade from the current brightness up to the given value
+// TODO: Check for equal or lesser value and react appropriately
 void NeoPixelStrip::fadeInBrightness(
     uint8_t brightnessLevel, uint16_t wait
 ){
     int j=brightness;
     //printf("FadeInPreBrightness: %d, %d\n", j, brightness);
-    for (int i=brightness; i<=brightnessLevel; i++) {
-        //printf("Fade I: %d\n", i);
-        i = uint8_t(i);
-        //printf("Fade IUint: %d\n", i);
-        brightness = i ;
-        //printf("Brightness: %d\n", brightness);
-        strip.setBrightnessFunctions(
-            adjustBrightness, adjustBrightness, adjustBrightness, adjustBrightness
-        );
-        strip.show() ;
-        delay(wait);
+    if (j < brightnessLevel) {
+        for (int i=brightness; i<=brightnessLevel; i++) {
+            //printf("Fade I: %d\n", i);
+            i = uint8_t(i);
+            //printf("Fade IUint: %d\n", i);
+            brightness = i ;
+            //printf("Brightness: %d\n", brightness);
+            strip.setBrightnessFunctions(
+                adjustBrightness, adjustBrightness, adjustBrightness, adjustBrightness
+            );
+            strip.show() ;
+            delay(wait);
+        }
+    } else if (j > brightnessLevel) {
+        for (int i=brightness; i>=brightnessLevel; i--) {
+            //printf("Fade I: %d\n", i);
+            i = uint8_t(i);
+            //printf("Fade IUint: %d\n", i);
+            brightness = i ;
+            //printf("Brightness: %d\n", brightness);
+            strip.setBrightnessFunctions(
+                adjustBrightness, adjustBrightness, adjustBrightness, adjustBrightness
+            );
+            strip.show() ;
+            delay(wait);
+        }
     }
     effect_index = 4;
 }
@@ -437,6 +453,7 @@ void NeoPixelStrip::theaterChase(uint32_t color, int wait) {
 
 // Rainbow cycle along whole strip. Pass delay time (in ms) between frames.
 void NeoPixelStrip::rainbow(int wait){
+    
     // Hue of first pixel runs 2 complete loops through the color wheel.
     // Color wheel has a range of 65536 but it's OK if we roll over, so
     // just count from 0 to 2*65536. Adding 1024 to firstPixelHue each time
@@ -481,6 +498,8 @@ void NeoPixelStrip::theaterChaseRainbow(int wait) {
         firstPixelHue += 65536 / 90; // One cycle of color wheel over 90 frames
         }
     }
+    // fill all with color 1 afterwards to prevent only having one LED lit
+    strip.fill(effect_color_1);
     updateStateColors();
     effect_index = 2;
 }
@@ -503,6 +522,77 @@ void NeoPixelStrip::htmlSinglePixel(int pixel_num, uint32_t packed_color, int wa
     }
 }
 
+// Rainbow cycle in sync with basic sixteenth-note melody, followed by two
+// flashes in sync with final two notes. 
+void NeoPixelStrip::gameCubeStartUp(){
+    //Delay for the first eighth rest
+    sleep_us(64655);
+    // Hue of first pixel runs 1 complete loop through the color wheel.
+    // Color wheel has a range of 65536 but it's OK if we roll over or go short,
+    // so just count from 0 to 65536. Adding 2731 to firstPixelHue each time
+    // means we'll make (65536/2731 ≈ 24) 24 passes through this outer loop:
+    for(long firstPixelHue = 0; firstPixelHue < 65536; firstPixelHue += 2731) {
+        // Notes which should be accented 
+        bool accentedNote = (firstPixelHue == 0) || (firstPixelHue / (2731 * 6) == 1) || 
+            (firstPixelHue / (2731 * 14) == 1) || (firstPixelHue / (2731 * 18) == 1);
+        for(int i=0; i<strip.numPixels(); i++) { // For each pixel in strip...
+            // Offset pixel hue by an amount to make one full revolution of the
+            // color wheel (range of 65536) along the length of the strip
+            // (strip.numPixels() steps):
+            int pixelHue = firstPixelHue + (i * 65536L / strip.numPixels());
+            // strip.ColorHSV() can take 1 or 3 arguments: a hue (0 to 65535) or
+            // optionally add saturation and value (brightness) (each 0 to 255).
+            // Here we're using just the triple-argument hue variant. The result
+            // is passed through strip.gamma32() to provide 'truer' colors
+            // before assigning to each pixel:
+            if (accentedNote) {
+                brightness = 180;
+                strip.setBrightnessFunctions(
+                    adjustBrightness, adjustBrightness, adjustBrightness, adjustBrightness
+                );
+                strip.setPixelColor(
+                    pixelOrder[parseOrder(i)], 
+                    strip.gamma32(strip.ColorHSV(pixelHue, 255, 180))
+                );
+            } else {
+                brightness = 100;
+                strip.setBrightnessFunctions(
+                    adjustBrightness, adjustBrightness, adjustBrightness, adjustBrightness
+                );
+                strip.setPixelColor(
+                    pixelOrder[parseOrder(i)], 
+                    strip.gamma32(strip.ColorHSV(pixelHue, 255, 100))
+                );
+            }
+        }
+        strip.show(); // Update strip with new contents
+        sleep_us(32328);  // Wait for a 16th of a beat
+    }
+    // final six sixteenth notes. (really 3 eighth notes)
+    // first at 180
+    brightness = 180;
+    strip.setBrightnessFunctions(
+        adjustBrightness, adjustBrightness, adjustBrightness, adjustBrightness
+    );
+    strip.fill(strip.gamma32(strip.ColorHSV(275, 255, 180))); // bright indigo
+    sleep_us(64655);
+
+    // rest at 0
+    strip.fill();
+    sleep_us(64655);
+
+    // second at 230
+    brightness = 230;
+    strip.setBrightnessFunctions(
+        adjustBrightness, adjustBrightness, adjustBrightness, adjustBrightness
+    );
+    strip.fill(strip.gamma32(strip.ColorHSV(0, 0, 230))); // brighter white
+    fadeInBrightness(100);
+    propTransitionAll(strip.Color(84, 107, 222));
+    effect_index=0;
+    updateStateColors();
+}
+
 // demo_loop() function -- Demonstration of basic usage
 void NeoPixelStrip::demo_loop() {
     printf("Color wipes\n");
@@ -523,17 +613,16 @@ void NeoPixelStrip::demo_loop() {
 
 // test_loop() function -- Demonstration of basic usage
 void NeoPixelStrip::test_loop() {
-    // Test sequence for startup
+    // Old Test sequence for startup
     // Should fade in to RGB(84, 107, 222)
-    printf("Fade In\n");
-    propTransitionBrightness(140, 30);
-    printf("Rainbow Marquee\n");
-    theaterChaseRainbow(12);
-    printf("Rainbows\n");
-    rainbow(5);
-    propTransitionAll(strip.Color(84, 107, 222));
-    
-
+    // printf("Fade In\n");
+    // propTransitionBrightness(140, 30);
+    // printf("Rainbow Marquee\n");
+    // theaterChaseRainbow(12);
+    // printf("Rainbows\n");
+    // rainbow(5);
+    // propTransitionAll(strip.Color(84, 107, 222));
+    gameCubeStartUp();
 }
 
 void NeoPixelStrip::test_wrapper(NeoPixelStrip *instance) {
