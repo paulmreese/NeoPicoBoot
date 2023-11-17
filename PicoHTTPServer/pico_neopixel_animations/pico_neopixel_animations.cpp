@@ -555,7 +555,7 @@ void NeoPixelStrip::gameCubeStartUp(){
                 // );
                 strip.setPixelColor(
                     pixelOrder[parseOrder(i)], 
-                    strip.gamma32(strip.ColorHSV(pixelHue, 255, 180))
+                    strip.gamma32(strip.ColorHSV(pixelHue, 255, 200))
                 );
             } else {
                 // brightness = 100;
@@ -564,7 +564,7 @@ void NeoPixelStrip::gameCubeStartUp(){
                 // );
                 strip.setPixelColor(
                     pixelOrder[parseOrder(i)], 
-                    strip.gamma32(strip.ColorHSV(pixelHue, 255, 100))
+                    strip.gamma32(strip.ColorHSV(pixelHue, 255, 160))
                 );
             }
         }
@@ -577,7 +577,7 @@ void NeoPixelStrip::gameCubeStartUp(){
     // strip.setBrightnessFunctions(
     //     adjustBrightness, adjustBrightness, adjustBrightness, adjustBrightness
     // );
-    strip.fill(strip.gamma32(strip.ColorHSV(275, 255, 180))); // bright indigo
+    strip.fill(strip.gamma32(strip.ColorHSV(275, 255, 200))); // bright indigo
     strip.show();
     sleep_us(eighthNote);
 
@@ -591,10 +591,10 @@ void NeoPixelStrip::gameCubeStartUp(){
     // strip.setBrightnessFunctions(
     //     adjustBrightness, adjustBrightness, adjustBrightness, adjustBrightness
     // );
-    strip.fill(strip.gamma32(strip.ColorHSV(0, 0, 230))); // brighter white
+    strip.fill(strip.gamma32(strip.ColorHSV(0, 0, 240))); // brighter white
     strip.show();
-    fadeInBrightness(100, 25);
-    propTransitionAll(strip.Color(84, 107, 222), 25);
+    fadeInBrightness(100, 20);
+    propTransitionAll(strip.Color(84, 107, 222), 20);
     effect_index=0;
     updateStateColors();
 }
