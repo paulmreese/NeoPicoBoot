@@ -525,8 +525,11 @@ void NeoPixelStrip::htmlSinglePixel(int pixel_num, uint32_t packed_color, int wa
 // Rainbow cycle in sync with basic sixteenth-note melody, followed by two
 // flashes in sync with final two notes. 
 void NeoPixelStrip::gameCubeStartUp(){
+    //Sixteenth-Note beat timing
+    uint64_t sixteenthNote = 129310;
+    uint64_t eighthNote = sixteenthNote * 2;
     //Delay for the first eighth rest
-    sleep_us(64655);
+    sleep_us(eighthNote);
     // Hue of first pixel runs 1 complete loop through the color wheel.
     // Color wheel has a range of 65536 but it's OK if we roll over or go short,
     // so just count from 0 to 65536. Adding 2731 to firstPixelHue each time
@@ -566,7 +569,7 @@ void NeoPixelStrip::gameCubeStartUp(){
             }
         }
         strip.show(); // Update strip with new contents
-        sleep_us(32328);  // Wait for a 16th of a beat
+        sleep_us(sixteenthNote);  // Wait for a 16th of a beat
     }
     // final six sixteenth notes. (really 3 eighth notes)
     // first at 180
@@ -576,12 +579,12 @@ void NeoPixelStrip::gameCubeStartUp(){
     );
     strip.fill(strip.gamma32(strip.ColorHSV(275, 255, 180))); // bright indigo
     strip.show();
-    sleep_us(64655);
+    sleep_us(eighthNote);
 
     // rest at 0
     strip.fill();
     strip.show();
-    sleep_us(64655);
+    sleep_us(eighthNote);
 
     // second at 230
     brightness = 230;
