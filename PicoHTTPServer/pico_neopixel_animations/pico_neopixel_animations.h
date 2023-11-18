@@ -152,6 +152,10 @@ class NeoPixelStrip {
         /* Function to fade from the current brightness down to 1 */
         void fadeOutBrightness(uint16_t wait = 50);
 
+        /* Function time specifically to fade in before the startup music of 
+           the GameCube */
+        void initialFadeIn();
+
         /* Transitions a single pixel from start color to finish color */
         void propTransitionSingle(
             uint16_t pixel,
