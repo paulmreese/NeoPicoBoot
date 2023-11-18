@@ -704,6 +704,10 @@ static void main_task(__unused void *params)
 	//  if no power LED is desired, comment this line out
 	cyw43_arch_gpio_put(CYW43_WL_GPIO_LED_PIN, 1);
 
+	// Delay to sync startup animation with cube
+	// Could be replaced with a fade-in animation of exactly this length
+	npStrip.delay(900);
+
 	initial_anim_wrapper();
 	
 	const pico_server_settings *settings = get_pico_server_settings();
@@ -753,8 +757,8 @@ void debug_write(const void *data, int size)
 
 void launch_server()
 {
-	// Delay to sync startup animation with cube
-	npStrip.delay(1100);
+	// Delay to all PicoBoot code to finish
+	npStrip.delay(200);
 	stdio_init_all();
 	TaskHandle_t task;
 	s_PrintfSemaphore = xSemaphoreCreateMutex();
