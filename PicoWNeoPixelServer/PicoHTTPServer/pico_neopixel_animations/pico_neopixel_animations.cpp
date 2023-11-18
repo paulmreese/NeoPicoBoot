@@ -307,6 +307,24 @@ void NeoPixelStrip::fadeOutBrightness(uint16_t wait
     effect_index = 5;
 }
 
+// Function specifically to fade in on time with the startup music of the 
+// GameCube
+void NeoPixelStrip::initialFadeIn() {
+    int j=brightness;
+    for (int i=1; i<=160; i++) {
+        //printf("Fade I: %d\n", i);
+        i = uint8_t(i);
+        //printf("Fade IUint: %d\n", i);
+        brightness = i ;
+        //printf("Brightness: %d\n", brightness);
+        strip.setBrightnessFunctions(
+            adjustBrightness, adjustBrightness, adjustBrightness, adjustBrightness
+        );
+        strip.show() ;
+        sleep_us(5625);
+    }
+}
+
 // Transitions a single pixel from start color to finish color, using a
 // step size between min_step and max_step, waiting wait milliseconds between
 // each step.
@@ -531,7 +549,7 @@ void NeoPixelStrip::gameCubeStartUp(){
     
     //Fade-in lights while the GC initially boots
     strip.fill(strip.Color(84, 107, 222));
-    fadeInBrightness(99, 9);
+    initialFadeIn();
     //Delay for the first eighth rest
     sleep_us(eighthNote);
     // Hue of first pixel runs 1 complete loop through the color wheel.
