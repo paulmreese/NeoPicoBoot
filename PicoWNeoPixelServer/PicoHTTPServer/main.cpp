@@ -706,7 +706,7 @@ static void main_task(__unused void *params)
 
 	// Delay to sync startup animation with cube
 	// Could be replaced with a fade-in animation of exactly this length
-	npStrip.delay(900);
+	// npStrip.delay(900);
 
 	initial_anim_wrapper();
 	
