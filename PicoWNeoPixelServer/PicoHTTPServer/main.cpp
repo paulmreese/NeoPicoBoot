@@ -705,11 +705,12 @@ static void main_task(__unused void *params)
 	cyw43_arch_gpio_put(CYW43_WL_GPIO_LED_PIN, 1);
 
 	// Delay to sync startup animation with GameCube
-	//CURRENTLY INACCURATE
+	//
 	// The current timing matches a GameCube that is NOT checking for discs
 	// Add this delay if the system is checking for discs (i.e. if you have a 
-	// functioning disc drive, you need this delay)
-	npStrip.delay(950);
+	// functioning disc drive and the lid is closed at startup, you need this 
+	// delay)
+	// npStrip.delay(950);
 
 	initial_anim_wrapper();
 	
