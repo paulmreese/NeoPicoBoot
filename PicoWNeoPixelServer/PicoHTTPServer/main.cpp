@@ -754,7 +754,7 @@ void debug_write(const void *data, int size)
 void launch_server()
 {
 	// Delay to sync startup animation with cube
-	npStrip.delay(950);
+	npStrip.delay(1150);
 	stdio_init_all();
 	TaskHandle_t task;
 	s_PrintfSemaphore = xSemaphoreCreateMutex();
