@@ -704,9 +704,10 @@ static void main_task(__unused void *params)
 	//  if no power LED is desired, comment this line out
 	cyw43_arch_gpio_put(CYW43_WL_GPIO_LED_PIN, 1);
 
-	// Delay to sync startup animation with cube
-	// Could be replaced with a fade-in animation of exactly this length
-	// npStrip.delay(900);
+	// Delay to sync startup animation with GameCube
+	// The current timing matches a GameCube that is NOT checking for discs
+	// Add this delay if the system is checking for discs
+	npStrip.delay(500);
 
 	initial_anim_wrapper();
 	
