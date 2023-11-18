@@ -43,7 +43,7 @@ class NeoPixelStrip {
             uint16_t led_count, 
             uint16_t pin, 
             std::string pixelOrderString="default",
-            uint8_t brightness=100
+            uint8_t brightness=160
         );
 
         static uint8_t brightness; //Max 255
@@ -214,8 +214,11 @@ class NeoPixelStrip {
         void theaterChaseRainbow(int wait);
 
         /* Endpoint function intended to be interacted with by other projects. 
-           Transitions a single pixel to a new color*/
+           Transitions a single pixel to a new color */
         void htmlSinglePixel(int pixel_num, uint32_t packed_color, int wait);
+
+        /* Startup animation synced with the GameCube startup song */
+        void gameCubeStartUp();
 
         /* Demonstration of basic usage */
         void demo_loop();
