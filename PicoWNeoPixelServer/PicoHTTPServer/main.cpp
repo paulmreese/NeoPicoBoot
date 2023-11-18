@@ -707,7 +707,7 @@ static void main_task(__unused void *params)
 	// Delay to sync startup animation with GameCube
 	// The current timing matches a GameCube that is NOT checking for discs
 	// Add this delay if the system is checking for discs
-	npStrip.delay(900);
+	npStrip.delay(950);
 
 	initial_anim_wrapper();
 	
