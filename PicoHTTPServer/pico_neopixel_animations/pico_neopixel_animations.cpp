@@ -39,8 +39,8 @@ NeoPixelStrip::NeoPixelStrip(
         );
     strip.show();           
 }
-
-uint8_t NeoPixelStrip::brightness=160;
+//Set to 0 for initial fade-in
+uint8_t NeoPixelStrip::brightness=0;
 
 // Helper Functions ---------------------------------------------
 
@@ -251,7 +251,7 @@ uint32_t NeoPixelStrip::propStepColor(
 // Functions for animating effects -----------------------------
 
 // Function to fade from the current brightness up to the given value
-// TODO: Check for equal or lesser value and react appropriately
+
 void NeoPixelStrip::fadeInBrightness(
     uint8_t brightnessLevel, uint16_t wait
 ){
@@ -528,6 +528,10 @@ void NeoPixelStrip::gameCubeStartUp(){
     //Sixteenth-Note beat timing
     uint64_t sixteenthNote = 129310;
     uint64_t eighthNote = sixteenthNote * 2;
+    
+    //Fade-in lights while the GC initially boots
+    strip.fill(strip.Color(84, 107, 222));
+    fadeInBrightness(99, 9);
     //Delay for the first eighth rest
     sleep_us(eighthNote);
     // Hue of first pixel runs 1 complete loop through the color wheel.
@@ -555,7 +559,7 @@ void NeoPixelStrip::gameCubeStartUp(){
                 // );
                 strip.setPixelColor(
                     pixelOrder[parseOrder(i)], 
-                    strip.gamma32(strip.ColorHSV(pixelHue, 255, 200))
+                    strip.gamma32(strip.ColorHSV(pixelHue, 255, 210))
                 );
             } else {
                 // brightness = 100;
@@ -596,7 +600,7 @@ void NeoPixelStrip::gameCubeStartUp(){
     fadeInBrightness(100, 20);
     propTransitionAll(strip.Color(84, 107, 222), 20);
     effect_index=0;
-    updateStateColors();
+    //updateStateColors();
 }
 
 // demo_loop() function -- Demonstration of basic usage
