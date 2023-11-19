@@ -19,9 +19,9 @@ This is an IPL replacement modchip for Nintendo GameCube. It's also a WiFi Acces
 
 The complete installation guide has been moved to [a separate document](/INSTALLATION.md).
 
-**Install firmware before wiring the Pico W to your GameCube. Connecting power to the USB port after the mod has been wired will destroy the power board, at minimum. Please mod carefully.**
+**A diode must be correctly installed between 5V and VSYS to prevent backflow. Connecting power to the USB port without a diode will destroy the power board, at minimum. Please mod carefully.**
 
-Other than the NeoPixels being added, and **3V3** being swapped for **VSYS** from the 5V rail of the controller ports, the wiring works exactly like the original. So, if you need any additional help you can head over to [the PicoBoot wiki](https://github.com/webhdx/PicoBoot/wiki) for [the PicoBoot Installation guide](../../wiki/Installation-guide).
+Other than the NeoPixels being added, and **3V3** being swapped for **VSYS** from the 5V rail of the controller ports(through [a Schottky diode](https://www.amazon.com/dp/B0BYWPMRT1)), the wiring works exactly like the original. So, if you need any additional help you can head over to [the PicoBoot wiki](https://github.com/webhdx/PicoBoot/wiki) for [the PicoBoot Installation guide](../../wiki/Installation-guide).
 
 Additionally, you can check the PicoBoot Discord Server to get support and discuss new features:
 
