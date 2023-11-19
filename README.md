@@ -38,6 +38,7 @@ Printing these `STL` files makes for a much simpler installation process, but ne
     1. The wires can exit the motherboard towards the controller ports, without deforming the RF shielding.
     2. The NeoPixels can be closer to the Pico W itself, with shorter wires.
 * [NeoPixel alignment bracket](/assets/NeoPixel_Bracket.stl) - This bracket helps to align all of the controller port NeoPixels with the correct spacing. It will only install below the controller ports, if you have a normally installed battery. This can be printed in PLA and hot-glued into place.
+  * This model was designed for a 0.4mm nozzle and 0.2mm layer height.
 
 ## Video guides and features overview
 
